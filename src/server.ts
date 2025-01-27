@@ -9,7 +9,7 @@ const app = express();
 
 // List of allowed origins for CORS
 const allowedOrigins = [
-  'https://storytelling-frontend-react.onrender.com', // Your deployed frontend domain
+  'https://storytelling-frontend-react.onrender.com', // deployed frontend domain
   'http://localhost:5173', // Local development environment
 ];
 
@@ -33,12 +33,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser()); // For handling cookies
 
-// Example root route (optional)
-app.get('/', (req, res) => {
-  res.send('Welcome to the Story API!');
-});
-
-// Use your routes
+// Mount the routes
 app.use('/api/stories', storyRoutes); 
 app.use('/api/auth', authRoutes); 
 

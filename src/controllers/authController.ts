@@ -3,10 +3,10 @@ import { generateAccessToken, generateRefreshToken } from '../helpers/authHelper
 import pool from '../db/connection';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { RegisterRequestBody, LoginRequestBody } from '../../types/types';  // Import the types
+import { RegisterRequestBody, LoginRequestBody } from '../../types/types';  
 
 // Register controller to add new users
-export const register = async (req: Request<{}, {}, RegisterRequestBody>, res: Response): Promise<Response | void> => {  // Specify RegisterRequestBody for req.body
+export const register = async (req: Request<{}, {}, RegisterRequestBody>, res: Response): Promise<Response | void> => {  
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
@@ -45,7 +45,6 @@ export const register = async (req: Request<{}, {}, RegisterRequestBody>, res: R
 
 // Login controller to authenticate users
 export const login = async (req: Request<{}, {}, LoginRequestBody>, res: Response): Promise<Response | void> => {  // Specify LoginRequestBody for req.body
-  console.log(req.body); // Log the body to check the data
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -61,7 +60,6 @@ export const login = async (req: Request<{}, {}, LoginRequestBody>, res: Respons
     const user = result.rows[0];
 
     const isPasswordValid = await bcrypt.compare(password, user.password_hash);
-    console.log('Password valid:', isPasswordValid);
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }

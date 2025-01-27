@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-
 import { JwtPayload } from '../../types/types';
 
 export const authenticateToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -27,7 +26,7 @@ export const authenticateToken = async (req: Request, res: Response, next: NextF
     const user = decoded as JwtPayload;
 
     // Set the user data to request
-    req.user = { id: user.userId, username: user.username }; // Ensure user.id is set correctly
+    req.user = { id: user.userId, username: user.username }; 
     next(); // Proceed to the next middleware/route handler
   });
 };

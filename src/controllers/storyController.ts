@@ -60,9 +60,9 @@ export const getStoryById = async (req: Request, res: Response, next: NextFuncti
   }
 };
 
-// Example function to add a collaborator
+
 export const addCollaborator = async (req: Request, res: Response): Promise<void> => {
-  const { userId, storyId } = req.body; // Assuming body contains userId and storyId
+  const { userId, storyId } = req.body; 
   try {
     // Check if the user is the author first
     const storyResult = await pool.query('SELECT * FROM stories WHERE id = $1', [storyId]);

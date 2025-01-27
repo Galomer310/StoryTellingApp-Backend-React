@@ -29,7 +29,7 @@ export const authorize = async (req: Request, res: Response, next: NextFunction)
     console.log(isCollaborator)
 
     if (!isAuthor) {
-      // If not the author, check if the user is a collaborator (if applicable)
+      // If not the author, check if the user is a collaborator 
       const collaboratorResult = await pool.query(
         "SELECT * FROM contributors WHERE user_id = $1 AND story_id = $2",
         [user.id, storyId]
