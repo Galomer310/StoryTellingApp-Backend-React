@@ -1,7 +1,7 @@
 import express from 'express';
 import { login, register, refreshAccessToken } from '../controllers/authController';
 import { authenticateToken } from '../middleware/authMiddleware';
-import { RegisterRequestBody, LoginRequestBody } from '../../../frontend/types/types';  // Import types for request bodies
+import { RegisterRequestBody, LoginRequestBody } from '../../types/types';  // Import types for request bodies
 
 const router = express.Router();
 
