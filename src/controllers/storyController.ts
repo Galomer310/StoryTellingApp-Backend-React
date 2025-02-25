@@ -33,10 +33,7 @@ export const createStory = async (req: Request, res: Response, next: NextFunctio
 // Controller to get all stories
 export const getStories = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const result = await pool.query(
-      `SELECT stories.*, users.username FROM stories
-      JOIN users ON stories.author_id = users.id`
-    );
+    const result = await pool.query('SELECT * FROM stories');
     res.status(200).json(result.rows);
   } catch (error) {
     console.error('Get stories error:', error);
